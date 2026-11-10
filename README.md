@@ -5,7 +5,7 @@
 | ファイル | 役割 |
 |---|---|
 | `pull_request_template.md` | PR を作るとき、本文に自動で入る |
-| `ISSUE_TEMPLATE/` | Issue を作る画面で、4 種類のフォーム（機能実装・改善 / 不具合修正 / 調査・検証 / その他）から選ぶ。白紙の Issue は作れない |
+| `.github/ISSUE_TEMPLATE/` | Issue を作る画面で、4 種類のフォーム（機能実装・改善 / 不具合修正 / 調査・検証 / その他）から選ぶ。白紙の Issue は作れない |
 | `workflow-templates/` | 各リポジトリの Actions →「New workflow」から追加できる CI（Self Review Check） |
 
 ## どのリポジトリに効くか
