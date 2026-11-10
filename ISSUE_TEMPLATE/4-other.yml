@@ -1,0 +1,63 @@
+name: その他
+description: 環境整備、先方への確認、申請、資料作成など、ほかの3種類に当てはまらないもの
+labels: ["task"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 種類
+      options:
+        - 環境整備
+        - 先方への確認
+        - 申請・手続き
+        - 資料作成
+        - その他
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 何をするかを1〜3行で
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: なぜ必要か。先方への確認なら、この確認が何を止めているか
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: 何ができたら閉じるか。誰が見ても判定できる形で
+      placeholder: 例) チーム全員が staging 環境にログインできる
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: やること
+      description: 担当と目安時間を付ける。メンバーごと・環境ごとの確認は表にしてもよい
+      value: |
+        - [ ] (担当) 内容 (目安)
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: やらないこと
+      description: この Issue では扱わないこと
+  - type: textarea
+    id: client
+    attributes:
+      label: 先方確認事項
+      description: 先方に聞くこと・もらうもの。誰に聞くかも書く
+  - type: textarea
+    id: refs
+    attributes:
+      label: 資料
+      description: 関連資料、Slack などのスレッド
+  - type: input
+    id: estimate
+    attributes:
+      label: 所要時間予想
+      placeholder: 例) 5h、15分

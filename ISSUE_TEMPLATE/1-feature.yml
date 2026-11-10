@@ -1,0 +1,73 @@
+name: 機能実装・改善
+description: 新しい機能を作る、既存の機能・モデル・ツールを良くする
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 何を作る・何を良くするかを1〜3行で
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: なぜ必要か。先方からの要望や、いま困っていること
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: 何ができたら閉じるか。誰が見ても判定できる形で（テストで確かめられる形だとなお良い）
+      placeholder: 例) CSV をアップロードすると、予測結果の一覧が画面に表示される
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: やること
+      description: 担当と目安時間を付ける。1 Issue が 1 PR で終わる粒度が目安で、大きければ Issue を分ける
+      value: |
+        - [ ] (担当) 内容 (目安)
+  - type: input
+    id: target
+    attributes:
+      label: 対象
+      description: 変更する機能・画面・ディレクトリ
+      placeholder: 例) ログイン画面、src/models/
+  - type: textarea
+    id: approach
+    attributes:
+      label: 実装方針
+      description: どう作るかの見立て。決まっていなければ空でよい
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: やらないこと
+      description: この Issue では扱わないこと
+  - type: checkboxes
+    id: high-impact
+    attributes:
+      label: 影響の大きい変更にあたるか
+      description: 当てはまる場合は、着手前にレビュアーと方針をすり合わせる
+      options:
+        - label: DB スキーマの変更・データ移行
+        - label: 認証・権限
+        - label: 課金・コスト計算
+        - label: インフラ・Secrets・環境変数
+        - label: 本番環境・先方環境に直接影響する
+  - type: textarea
+    id: client
+    attributes:
+      label: 先方確認事項
+      description: 先方に聞くこと・もらうもの
+  - type: textarea
+    id: refs
+    attributes:
+      label: 資料
+      description: 設計資料、Slack などのスレッド、データの置き場所。顧客データそのものは貼らずにリンクにする
+  - type: input
+    id: estimate
+    attributes:
+      label: 所要時間予想
+      placeholder: 例) 5h、2人日

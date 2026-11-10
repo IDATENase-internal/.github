@@ -1,0 +1,45 @@
+name: Self Review Check
+
+# PR 本文の「AI によるセルフレビュー」にチェックが入っているかを確かめる。
+# マージを止めるには、ブランチ保護（またはルールセット）でこのチェックを必須にする。
+on:
+  pull_request:
+    # edited: PR 本文を編集してチェックを入れたときに再評価するため必須
+    types: [opened, edited, reopened, ready_for_review, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  self-review:
+    name: Self Review Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify self-review declaration in PR body
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          IS_DRAFT: ${{ github.event.pull_request.draft }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          # ドラフトはマージできないため対象外
+          if [ "$IS_DRAFT" = "true" ]; then
+            echo "ドラフト PR のため、セルフレビューの確認をスキップします。"
+            exit 0
+          fi
+
+          # 環境ブランチ間の昇格 PR（staging → production など）は、元の PR で確認済みのため対象外
+          case "$HEAD_REF" in
+            staging|develop)
+              echo "環境ブランチ間の PR のため、セルフレビューの確認をスキップします。"
+              exit 0
+              ;;
+          esac
+
+          # PR 本文に「- [x] AI によるセルフレビュー…」のチェック済みの行があるか確かめる
+          if printf '%s' "$PR_BODY" | grep -qE '\[[xX]\].*セルフレビュー'; then
+            echo '✅ セルフレビューの実施を確認しました。'
+            exit 0
+          fi
+
+          echo '::error title=セルフレビュー未実施::PR 本文の「AI によるセルフレビュー（/code-review など）を実施し…」にチェックが入っていません。セルフレビューで指摘に対応してから、チェック [x] を入れてください。'
+          exit 1

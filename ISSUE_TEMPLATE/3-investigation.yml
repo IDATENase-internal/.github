@@ -1,0 +1,80 @@
+name: 調査・検証
+description: できるか・どうなっているかを確かめる（実験、データ分析、ツール比較、仕組みの理解）
+labels: ["investigation"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 何を確かめるかを1〜3行で
+      placeholder: 例) 前処理を見直すと、検証データでの判定精度が目標に届くかを確かめる
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: なぜ確かめるのか。先方からの要望や、前の検証で分かったこと
+  - type: textarea
+    id: questions
+    attributes:
+      label: 確かめたい問い
+      description: Yes/No で答えられる形にして、優先度の高い順に並べる
+      value: |
+        1.
+        2.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: 何が分かったら閉じるか。評価指標と目標値、打ち切る条件（時間・回数）も書く
+      placeholder: 例) 問い1と2に答えられたら完了。目標は F1 0.8 以上。5時間で見通しが立たなければ、分かったことをまとめて打ち切る
+    validations:
+      required: true
+  - type: input
+    id: subject
+    attributes:
+      label: 題材・データ
+      placeholder: 例) 先方提供データ（10月受領分）、公開データセット
+  - type: dropdown
+    id: env
+    attributes:
+      label: 実行環境
+      multiple: true
+      options:
+        - ローカルPC
+        - クラウド（AWS など）
+        - GPU・計算サーバー
+        - 先方環境（貸与PC・先方サーバーなど）
+        - staging
+        - production
+        - その他
+  - type: textarea
+    id: tasks
+    attributes:
+      label: やること
+      description: 担当と目安時間を付ける
+      value: |
+        - [ ] (担当) 内容 (目安)
+  - type: textarea
+    id: client
+    attributes:
+      label: 先方確認事項
+      description: 先方に聞くこと・もらうもの。誰に聞くかも書く
+  - type: textarea
+    id: refs
+    attributes:
+      label: 資料
+      description: notebook、実験ログ、データの置き場所。顧客データそのものは貼らずにリンクにする
+  - type: input
+    id: estimate
+    attributes:
+      label: 所要時間予想
+      placeholder: 例) 5h
+  - type: textarea
+    id: conclusion
+    attributes:
+      label: 結論（クローズ時に追記）
+      description: 問いごとの答え / 根拠（数値・グラフ・notebook へのリンク）/ 次のアクション

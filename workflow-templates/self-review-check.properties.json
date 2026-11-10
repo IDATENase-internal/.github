@@ -1,0 +1,5 @@
+{
+  "name": "Self Review Check",
+  "description": "PR 本文で、AI によるセルフレビューの実施にチェックが入っているかを確かめます。",
+  "categories": ["Automation"]
+}

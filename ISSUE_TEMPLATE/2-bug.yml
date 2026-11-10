@@ -1,0 +1,71 @@
+name: 不具合修正
+description: 動くはずのものが動かないので直す
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: アクセストークン、パスワード、顧客データ（個人情報や先方から提供されたファイル）は貼らないでください。ログやスクリーンショットに含まれていないかも確認してください。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 何が起きているかを1〜2行で
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 実行したコマンドや AI への指示もそのまま書く
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待した動作
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の動作
+      description: エラーメッセージやスクリーンショット
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 発生環境
+      value: |
+        - 環境: （ローカル / staging / production / 先方環境 など）
+        - OS・ブラウザ:
+        - ブランチ・コミット:
+        - 使ったツール: （分かればバージョンも）
+    validations:
+      required: true
+  - type: dropdown
+    id: impact
+    attributes:
+      label: 利用者への影響
+      options:
+        - 全員が使えない
+        - 一部の人・一部の機能が使えない
+        - 回避策がある
+        - 開発メンバーだけに影響
+    validations:
+      required: true
+  - type: input
+    id: related
+    attributes:
+      label: 関連する PR・Issue
+      placeholder: 例) #12
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログ
+      description: エラーログやスタックトレース
+      render: text
